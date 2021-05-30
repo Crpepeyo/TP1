@@ -27,7 +27,7 @@ class ChoixListActivity : AppCompatActivity(){
             lists.add(List("list ${it + 1}"))
         }
 
-        var adapter = AdapterList(lists)
+        val adapter = AdapterList(lists)
 
         var b=findViewById<Button>(R.id.buttonOkChListe)
         var t=findViewById<EditText>(R.id.editTextListe)
@@ -42,29 +42,19 @@ class ChoixListActivity : AppCompatActivity(){
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
-        val intent = Intent(this,ShowListActivity::class.java)
-        intent.putExtra("pseudo", pseudo)
+        val change = Intent(this,ShowListActivity::class.java)
+        change.putExtra("pseudo", pseudo)
 
         adapter.setOnItemClickListener(object : AdapterList.OnItemClickListener {
             override fun onItemClick(position: Int) {
                 val listName = lists[position].listTextStr
-                intent.putExtra("list", listName)
-                startActivity(intent)
+                Toast.makeText(applicationContext, listName, Toast.LENGTH_SHORT).show()
+                change.putExtra("list", listName)
+                startActivity(change)
             }
+
         })
 
         }
 
-    override fun onStart() {
-        super.onStart()
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-    }
     }
