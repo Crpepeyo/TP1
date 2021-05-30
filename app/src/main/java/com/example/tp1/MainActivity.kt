@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -63,6 +64,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.ButtonOk ->
             {
                 Log.i("PMR","clickok")
+                Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show()
                 //Garder dans shared preferences
                 editor.putString("login", Pseudo?.text.toString())
                 editor.commit()

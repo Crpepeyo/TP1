@@ -11,23 +11,36 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class ChoixListActivity : AppCompatActivity(){
-    val context = this
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choix_list)
         var pseudo: String? = intent.getStringExtra("pseudo")
+        this.title="$pseudo lists"
 
         val recyclerView = findViewById<RecyclerView>(R.id.RecyclerViewChListe)
         val lists: MutableList<List> = mutableListOf()
 
-        repeat(5){
-            lists.add(List("new list ${it + 1}"))
+
+        repeat(3){
+            lists.add(List("list ${it + 1}"))
         }
 
-        val adapter = AdapterList(lists)
+        var adapter = AdapterList(lists)
 
+        var b=findViewById<Button>(R.id.buttonOkChListe)
+        var t=findViewById<EditText>(R.id.editTextListe)
+        b.setOnClickListener {
+            var newListName = t.text.toString()
+            Toast.makeText(this, newListName, Toast.LENGTH_SHORT).show()
+            adapter.addData(newListName)
+            t.setText("")
+
+        }
+
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
         val intent = Intent(this,ShowListActivity::class.java)
         intent.putExtra("pseudo", pseudo)
@@ -40,19 +53,18 @@ class ChoixListActivity : AppCompatActivity(){
             }
         })
 
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-
-        this.title="$pseudo lists"
-
-
-        var b=findViewById<Button>(R.id.buttonOkChListe)
-        var t=findViewById<EditText>(R.id.editTextListe)
-        b.setOnClickListener {
-            var newListName = b.text.toString()
-                adapter.addData(newListName)
-                t.setText("")
-            }
-
         }
+
+    override fun onStart() {
+        super.onStart()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+    }
     }
