@@ -1,16 +1,10 @@
 package com.example.tp1
-
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.CompoundButton
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tp1.R
-import com.example.tp1.Item
 
 
 class AdapterItem(private val dataset: MutableList<Item>): RecyclerView.Adapter<AdapterItem.ItemViewHolder>()  {
@@ -48,10 +42,5 @@ class AdapterItem(private val dataset: MutableList<Item>): RecyclerView.Adapter<
         }
     }
 
-//    private fun alerter(context: Context, s: String) {
-//        Log.i(CAT, s)
-//        var t = Toast.makeText(context, s, Toast.LENGTH_SHORT)
-//        t.show()
-//    }
 
 }
