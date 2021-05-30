@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -42,6 +43,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        when (id) {
+            R.id.action_settings-> {
+                val iGP = Intent(this, SettingsActivity::class.java)
+                startActivity(iGP)
+            }
+
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onClick(v: View?) {

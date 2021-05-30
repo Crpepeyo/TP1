@@ -4,8 +4,15 @@
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="remember"
-        android:summary="Indique si la sauvegarde des identifiants est active par défaut"
-        android:title="Sauver Préférences" />
+        android:summary="Indicates whether the saving of identifiers is active by default"
+        android:title="Save Preferences" />
+
+    <MultiSelectListPreference
+        android:defaultValue="@array/reply_entries"
+        android:entries="@array/reply_entries"
+        android:entryValues="@array/reply_entries"
+        android:key="Usernames"
+        android:title="Usernames" />
 
 
 </PreferenceScreen>

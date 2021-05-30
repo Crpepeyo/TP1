@@ -7,7 +7,7 @@
     tools:context=".ChoixListActivity">
 
     <EditText
-        android:id="@+id/editTextListe"
+        android:id="@+id/editTextObject"
         android:layout_width="339dp"
         android:layout_height="44dp"
         android:ems="10"
@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonOkChListe"
+        android:id="@+id/buttonOkChObject"
         android:layout_width="62dp"
         android:layout_height="45dp"
         android:text="ok"
@@ -25,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerViewChListe"
+        android:id="@+id/RecyclerViewChObject"
         android:layout_width="470dp"
         android:layout_height="791dp"
         app:layout_constraintStart_toStartOf="parent"
