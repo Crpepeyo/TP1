@@ -1,5 +1,6 @@
 package com.example.tp1
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -13,7 +14,8 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    private var sp: SharedPreferences? = null
+    private lateinit var sp: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
     private var Pseudo: EditText? = null
     private var BtnOK: Button? = null
 
@@ -22,10 +24,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
 
         sp = PreferenceManager.getDefaultSharedPreferences(this)
+        editor = sp.edit()
+
+        //sp = getSharedPreferences("sp",Context.MODE_PRIVATE)
         Pseudo = findViewById(R.id.Pseudo)
         BtnOK = findViewById(R.id.ButtonOk)
 
         BtnOK!!.setOnClickListener(this)
+
+
+
+        var l=sp.getString("login","null")
+        Pseudo?.setText(l.toString())
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -40,11 +50,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.ButtonOk ->
             {
                 Log.i("PMR","clickok")
-                sp?.edit()?.putString("login", Pseudo?.text.toString())
-                sp?.edit()?.commit()
+                //Garder dans shared preferences
+                editor.putString("login", Pseudo?.text.toString())
+                editor.commit()
 
-                val versSecondAct: Intent
-                versSecondAct = Intent(this@MainActivity, ChoixListActivity::class.java)
+                var l= sp.getString("login","gf")
+                Log.i("PMR",l.toString())
+
+
+                //Changer Activite
+                val versSecondAct: Intent = Intent(this@MainActivity, ChoixListActivity::class.java)
+                //Envoyer donnes
                 versSecondAct.putExtra("pseudo",Pseudo?.text.toString())
                 startActivity(versSecondAct)
 
